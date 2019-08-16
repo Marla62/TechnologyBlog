@@ -589,3 +589,59 @@ if (errorArray.includes(errorcode)) {
   //do something
 }
 ```
+#### !!注意
+对对象赋值不要用null;
+let obj = null;
+obj.a = 1;//报错
+obj = {};
+obj.a =1;//正确  
+
+#### 指针问题 
+
+## 支付宝的坑
+
+1. 关于支付宝的点击事件
+
+   支付宝的点击事件总共有三个默认参数 click(e,a,b) 
+
+   e是事件对象,a和b 分别是一个空方法,不知道干嘛用的
+
+1. 当要将一个函数作为一个函数的参数时,不要加(),加了括号返回的是函数的返回值  
+
+##微信小程序的坑
+1. 小程序渲染层内核不一致导致某些api不可用  
+  > 数组的扁平化方法 Array.prototype.flat() 不支持  
+  解决: 重新定义此方法到数组对象的原型链上
+  ```javascript  
+    /**
+     * 2019年8月16日
+     * 给数组添加flat方法
+     */
+    addMethodToArray() {
+      Array.prototype.flat = function(depth) {
+        // let arr = this.value; //读不到
+        let arr = this; //数组本身
+        let res = [],
+          depthArg = depth || 1,
+          depthNum = 0,
+          flatMap = arr => {
+            arr.map((element, index, array) => {
+              if (Object.prototype.toString.call(element).slice(8, -1) === 'Array') {
+                if (depthNum < depthArg) {
+                  depthNum++;
+                  flatMap(element);
+                } else {
+                  res.push(element);
+                }
+              } else {
+                res.push(element);
+                if (index === array.length - 1) depthNum = 0;
+              }
+            });
+          };
+        flatMap(arr);
+        return res;
+      };
+    },
+
+  ```
