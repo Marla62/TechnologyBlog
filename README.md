@@ -596,7 +596,46 @@ obj.a = 1;//报错
 obj = {};
 obj.a =1;//正确  
 
-#### 指针问题 
+## javaScript中的一些技巧
+1. 当有多个if else 和 else if 的条件判断
+ > 更多参考: https://juejin.im/post/5bdfef86e51d453bf8051bf8
+```javascript
+  //1.传统写法
+  let status;
+  if (status == 0){
+    //do sth
+  } else if(status == 1) {
+    //do sth
+  } else if(status == 2) {
+    //do sth
+  } else if(status == 3) {
+    //do sth
+  }
+  //2. 略微优化 可用switch case;
+  // 将判断条件作为键名 将处理逻辑作为键值
+  //3. 将条件和要做的事情放到对象(键值对)
+  let statusArray = {
+    1: 'do sth1',
+    2: 'do sth2',
+    3: 'do sth3',
+    4: 'do sth4',
+    'default': 'do default',
+  }
+  //4. 当多元判断, 使用Map()对象  
+    const actions = new Map([
+      ['guest_1', ()=>{/*do sth*/}],
+      ['guest_2', ()=>{/*do sth*/}],
+      ['guest_3', ()=>{/*do sth*/}],
+      ['guest_4', ()=>{/*do sth*/}],
+      ['guest_5', ()=>{/*do sth*/}],
+      ['master_1', ()=>{/*do sth*/}],
+      ['master_2', ()=>{/*do sth*/}],
+      ['master_3', ()=>{/*do sth*/}],
+      ['master_4', ()=>{/*do sth*/}],
+      ['master_5', ()=>{/*do sth*/}],
+      ['default', ()=>{/*do sth*/}],
+    ])
+```
 
 ## 支付宝的坑
 
@@ -608,7 +647,7 @@ obj.a =1;//正确
 
 1. 当要将一个函数作为一个函数的参数时,不要加(),加了括号返回的是函数的返回值  
 
-##微信小程序的坑
+## 微信小程序的坑  
 1. 小程序渲染层内核不一致导致某些api不可用  
   > 数组的扁平化方法 Array.prototype.flat() 不支持  
   解决: 重新定义此方法到数组对象的原型链上
