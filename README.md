@@ -705,7 +705,8 @@ const actions = new Map([
 ```
 
 2. 解构赋值带来的便利
-> 利用结构赋值返回 被修改值 的特性
+   > 利用结构赋值返回 被修改值 的特性
+
 ```javascript
 let data = this.data;
 _this.setData((data = res.homeButtons));
@@ -779,4 +780,25 @@ _this.setData((data = res.homeButtons));
     };
   },
 
+```
+
+#### 数组去重,并对相同项累加
+
+```javaScript
+let arr = [
+  {id:1,num:1},
+  {id:1,num:2},
+  {id:1,num:3},
+  {id:2,num:10},
+  ];
+  const ids = {}
+  const newArr = arr.filter((val,index) => {
+    if(val.id in ids){
+        arr[ids[val.id]].value += val.value
+        return false
+    }else{
+        ids[val.id] = index
+        return true
+    }
+})
 ```
