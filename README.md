@@ -801,4 +801,8 @@ let arr = [
         return true
     }
 })
+```  
+######console的特殊用法
+```JavaScript
+  console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
 ```
