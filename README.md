@@ -805,4 +805,7 @@ let arr = [
 ######console的特殊用法
 ```JavaScript
   console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
-```
+```  
+##### sourcetree无法匹配git
+> clone时,显示无效的git仓库或url
+解决: 工具 -> 选项 -> 打开git关联
