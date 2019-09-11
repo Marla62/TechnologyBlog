@@ -116,7 +116,7 @@ vue-router 的路由钩子使用方法
 1. 下载 EXE 安装包,安装时勾选 add path,以添加到全局变量(系统用户变量中添加 python 路径)
 2. 打开 DOS 界面,键入 python,启动解释器
 3. print 'hello world' 回车
-4. 退出 python 提示符 使用**Ctrl-z**再按**Enter**
+4. 退出 python 提示符 使用**Ctrl-z**再按**Enter** 或者 调用exit() 
 
 #### 2019 年 5 月 16 日 16:54:32
 
