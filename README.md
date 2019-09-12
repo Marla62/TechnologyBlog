@@ -780,8 +780,24 @@ _this.setData((data = res.homeButtons));
     };
   },
 
-```
-
+```  
+2. 小程序构建npm失败  
+    [官方文档地址(官方是错误的)](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html) 
+    [csdn参考地址](https://blog.csdn.net/weixin_42275932/article/details/84941057)  
+    小程序从基础库版本 2.2.1 以上就开始支持npm安装第三方包了，看了文档之后，我就吐槽（妈的写这么笼统，坑不死人）。
+    首先，如果你按文档走下去：
+    1、执行命令安装npm install
+    2、工具 -> 构建npm
+    恭喜你，将会看到没有找到 node_modules 目录。
+    问题原因：
+    一直开发小程序，没怎么用过npm了，特么的发现npm还没有初始化，就直接让人安装了（文档太笼统）,还有就是npm install 加上安装的包名
+    正确步骤：
+    1、在小程序根目录下执行命令：
+      npm init
+    2、在继续安装你要安装的第三方包：
+      npm i vant-weapp -S --production
+    3、开发工具：工具 -> 构建npm
+    4、详情里面：选中使用npm模块
 ###### 数组去重,并对相同项累加
 
 ```javaScript
