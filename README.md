@@ -116,7 +116,7 @@ vue-router 的路由钩子使用方法
 1. 下载 EXE 安装包,安装时勾选 add path,以添加到全局变量(系统用户变量中添加 python 路径)
 2. 打开 DOS 界面,键入 python,启动解释器
 3. print 'hello world' 回车
-4. 退出 python 提示符 使用**Ctrl-z**再按**Enter** 或者 调用exit() 
+4. 退出 python 提示符 使用**Ctrl-z**再按**Enter** 或者 调用 exit()
 
 ##### 2019 年 5 月 16 日 16:54:32
 
@@ -780,24 +780,29 @@ _this.setData((data = res.homeButtons));
     };
   },
 
-```  
-2. 小程序构建npm失败  
-    [官方文档地址(官方是错误的)](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html) 
-    [csdn参考地址](https://blog.csdn.net/weixin_42275932/article/details/84941057)  
-    小程序从基础库版本 2.2.1 以上就开始支持npm安装第三方包了，看了文档之后，我就吐槽（妈的写这么笼统，坑不死人）。
-    首先，如果你按文档走下去：
-    1、执行命令安装npm install
-    2、工具 -> 构建npm
-    恭喜你，将会看到没有找到 node_modules 目录。
-    问题原因：
-    一直开发小程序，没怎么用过npm了，特么的发现npm还没有初始化，就直接让人安装了（文档太笼统）,还有就是npm install 加上安装的包名
-    正确步骤：
-    1、在小程序根目录下执行命令：
-      npm init
-    2、在继续安装你要安装的第三方包：
-      npm i vant-weapp -S --production
-    3、开发工具：工具 -> 构建npm
-    4、详情里面：选中使用npm模块
+```
+
+2. 小程序构建 npm 失败  
+   [官方文档地址(官方是错误的)](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)
+   [csdn 参考地址](https://blog.csdn.net/weixin_42275932/article/details/84941057)  
+   小程序从基础库版本 2.2.1 以上就开始支持 npm 安装第三方包了，看了文档之后，我就吐槽（妈的写这么笼统，坑不死人）。
+   首先，如果你按文档走下去：
+   1、执行命令安装 npm install
+   2、工具 -> 构建 npm
+   恭喜你，将会看到没有找到 node_modules 目录。
+   问题原因：
+   一直开发小程序，没怎么用过 npm 了，特么的发现 npm 还没有初始化，就直接让人安装了（文档太笼统）,还有就是 npm install 加上安装的包名
+   正确步骤：
+   1、在小程序根目录下执行命令：
+   npm init
+   2、在继续安装你要安装的第三方包：
+   npm i vant-weapp -S --production
+   3、开发工具：工具 -> 构建 npm
+   4、详情里面：选中使用 npm 模块
+3. 小程序 require 引入包的问题  
+   已知:有两个 js 包, atest.js 和 btest.js,在 atest.js 中用 require 引入 btest.js 时,因为 btest 还没有生成,此时引入的 btest 是个空对象
+   解决:
+
 ###### 数组去重,并对相同项累加
 
 ```javaScript
@@ -817,11 +822,23 @@ let arr = [
         return true
     }
 })
-```  
-###### console的特殊用法
+```
+
+###### console 的特殊用法
+
 ```JavaScript
   console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
-```  
-###### sourcetree无法匹配git
-> clone时,显示无效的git仓库或url
-解决: 工具 -> 选项 -> 打开git关联
+```
+
+###### sourcetree 无法匹配 git
+
+> clone 时,显示无效的 git 仓库或 url
+> 解决: 工具 -> 选项 -> 打开 git 关联
+
+###### js 的事件循环机制
+
+参考链接: https://juejin.im/post/5d5b4c2df265da03dd3d73e5
+
+###### js 实现继承的方式
+
+1. 原型链继承 2. 构造函数继承 3. 组合继承 4. 关联继承 (其中一项是错误的,请选出)
