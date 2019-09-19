@@ -609,7 +609,7 @@ obj.a =1;//正确
 ## javaScript 中的一些技巧
 
 1. 当有多个 if else 和 else if 的条件判断
-   
+
    > 更多参考: https://juejin.im/post/5bdfef86e51d453bf8051bf8
 
 ```javascript
@@ -706,7 +706,7 @@ const actions = new Map([
 ```
 
 2. 解构赋值带来的便利
-   
+
    > 利用结构赋值返回 被修改值 的特性
 
 ```javascript
@@ -802,10 +802,11 @@ _this.setData((data = res.homeButtons));
    3、开发工具：工具 -> 构建 npm
    4、详情里面：选中使用 npm 模块
 3. 小程序 require 引入包的问题  
+    [参考链接](http://www.ruanyifeng.com/blog/2015/11/circular-dependency.html)  
    已知:有两个 js 包, atest.js 和 btest.js,在 atest.js 中用 require 引入 btest.js 时,因为 btest 还没有生成,此时引入的 btest 是个空对象
    解决:
 
-###### 数组去重,并对相同项累加
+##### 数组去重,并对相同项累加
 
 ```javaScript
 let arr = [
@@ -826,7 +827,7 @@ let arr = [
 })
 ```
 
-###### console 的特殊用法
+##### console 的特殊用法
 
 ```JavaScript
   console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
@@ -839,9 +840,9 @@ let arr = [
 
 #### js 的事件循环机制
 
-参考链接: https://juejin.im/post/5d5b4c2df265da03dd3d73e5  
+参考链接: https://juejin.im/post/5d5b4c2df265da03dd3d73e5
 
->   一个CPU可以有多个进程，一个进程可以有很多线程
+> 一个 CPU 可以有多个进程，一个进程可以有很多线程
 
 浏览器是多进程的
 
@@ -851,58 +852,53 @@ let arr = [
 
 - 第三方插件进程
 
-- GPU进程
+- GPU 进程
 
-- 渲染进程 
+- 渲染进程
 
-  >  就是我们所说的浏览器内核  
-  
+  > 就是我们所说的浏览器内核
+
   - 负责页面渲染脚本执行
 
 ##### 2.浏览器内核渲染进程
 
 渲染进程包括很多的线程:
 
-- GUI渲染线程
-  - 负责UI渲染,布局和绘制
-  - 页面需要重构和回流时,该线程就会执行
-  - 与js引擎互斥,原因:防止渲染结果不可预期
+- GUI 渲染线程
 
-- JS引擎线程
-  - 负责处理解析和执行JavaScript脚本程序
-  - 只有一个js引擎线程(单线程)
-  - 与GUI渲染线程互斥,防止结果不可预期
+  - 负责 UI 渲染,布局和绘制
+  - 页面需要重构和回流时,该线程就会执行
+  - 与 js 引擎互斥,原因:防止渲染结果不可预期
+
+- JS 引擎线程
+  - 负责处理解析和执行 JavaScript 脚本程序
+  - 只有一个 js 引擎线程(单线程)
+  - 与 GUI 渲染线程互斥,防止结果不可预期
 - 事件触发线程
   - 用来控制事件循环, settimeout,Ajax,点击事件
-  - 当事件满足触发条件时,将事件放入js引擎所在的执行队列中
+  - 当事件满足触发条件时,将事件放入 js 引擎所在的执行队列中
 - 定时触发线程
-  - settimeout,setinterval所在的线程
+  - settimeout,setinterval 所在的线程
   - 定时任务是由定时触发线程来计时的
   - 计时完毕后,通知事件触发线程
-- 异步HTTP请求线程
-  - 单独的一个线程,用来处理Ajax请求
+- 异步 HTTP 请求线程
+  - 单独的一个线程,用来处理 Ajax 请求
   - 当请求完成时,通知事件触发线程
 
-##### 3.为什么js是单线程的
+##### 3.为什么 js 是单线程的
 
 - 多线程的操作是需要加锁的, 如果加锁编码会变得很复杂
-- 如果同时操作dom元素,在不加锁的情况下渲染结果会变得不可预期
+- 如果同时操作 dom 元素,在不加锁的情况下渲染结果会变得不可预期
 
-##### 4. 为什么gui渲染线程和js引擎线程互斥
+##### 4. 为什么 gui 渲染线程和 js 引擎线程互斥
 
-- 因为js是可以操作DOM的, 如果在js操作DOM的过程中,GUI渲染线程也在执行,以下情况: 
+- 因为 js 是可以操作 DOM 的, 如果在 js 操作 DOM 的过程中,GUI 渲染线程也在执行,以下情况:
 
-  > 在同一时刻,js删除了黑色的块,gui同时也在画黑色的块,此时就会导致渲染和预期不一致
+  > 在同一时刻,js 删除了黑色的块,gui 同时也在画黑色的块,此时就会导致渲染和预期不一致
 
-- 所以GUI渲染线程和js引擎线程互斥,当`JS引擎线程`执行时`GUI渲染线程`会被挂起，GUI更新则会被保存在一个队列中等待`JS引擎线程`空闲时立即被执行。
+- 所以 GUI 渲染线程和 js 引擎线程互斥,当`JS引擎线程`执行时`GUI渲染线程`会被挂起，GUI 更新则会被保存在一个队列中等待`JS引擎线程`空闲时立即被执行。
 
-##### 5. 从事件循环(event loop)看js的运行机制
-
-
-
-
-
-
+##### 5. 从事件循环(event loop)看 js 的运行机制
 
 ###### js 实现继承的方式
 
