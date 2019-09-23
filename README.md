@@ -816,6 +816,8 @@ _this.setData((data = res.homeButtons));
    ```
 5. 小程序获取手机号第一次失败,第二次成功的问题  
    [参考链接](https://blog.csdn.net/hl18730262380/article/details/89671346)
+6. 三分钟创建 GitHub 博客
+   [参考链接]: (https://zhuanlan.zhihu.com/p/28321740)
 
 ##### 数组去重,并对相同项累加
 
