@@ -804,16 +804,19 @@ _this.setData((data = res.homeButtons));
 3. 小程序 require 引入包的问题  
     [参考链接](http://www.ruanyifeng.com/blog/2015/11/circular-dependency.html)  
    已知:有两个 js 包, atest.js 和 btest.js,在 atest.js 中用 require 引入 btest.js 时,因为 btest 还没有生成,此时引入的 btest 是个空对象
-   解决:  
-4. 微信小程序 从A跳到B页面, 在B页面可以使用A的方法,通过wx.navigateBack()返回A页面  
-    问题: 从A页面通过wx.navigateTo 跳到B页面后, B做完操作后返回A,并且A页面等着B的操作结果
-    解决: 
-    ```javaScript
-    //B页面的JS
-      let pages = getCurrentPages();
-      let prevPage = pages[pages.length - 2]; //获取到A页面
-      prevPage.doItemSelect({ selectedClassIndex, selectedItemIndex, isInit: false }); //在B调用A的方法
-    ```
+   解决:
+4. 微信小程序 从 A 跳到 B 页面, 在 B 页面可以使用 A 的方法,通过 wx.navigateBack()返回 A 页面  
+   问题: 从 A 页面通过 wx.navigateTo 跳到 B 页面后, B 做完操作后返回 A,并且 A 页面等着 B 的操作结果
+   解决:
+   ```javaScript
+   //B页面的JS
+     let pages = getCurrentPages();
+     let prevPage = pages[pages.length - 2]; //获取到A页面
+     prevPage.doItemSelect({ selectedClassIndex, selectedItemIndex, isInit: false }); //在B调用A的方法
+   ```
+5. 小程序获取手机号第一次失败,第二次成功的问题  
+   [参考链接](https://blog.csdn.net/hl18730262380/article/details/89671346)
+
 ##### 数组去重,并对相同项累加
 
 ```javaScript
